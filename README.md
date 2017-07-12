@@ -11,7 +11,7 @@ Install
 
 Run the following command in your Node-RED user directory - typically `~/.node-red`
 
-        npm install somax/node-red-mockingbird
+        npm install node-red-contrib-mockingbird
 
 Usage
 -----
