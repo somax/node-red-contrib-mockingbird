@@ -1,0 +1,20 @@
+{
+  "name": "node-red-mockingbird",
+  "version": "0.1.0",
+  "description": "A Node-RED node to create a mockdata for test-cases.",
+  "keywords": [ "node-red", "data-generator", "dummy-json", "mockdata" ],
+  "node-red": {
+    "nodes": {
+      "mockingbird": "mockingbird.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/????"
+  },
+  "author": "somaxj@163.com",
+  "license": "ISC",
+  "dependencies": {
+    "dummy-json": "1.0.*"
+  }
+}
