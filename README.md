@@ -1,19 +1,17 @@
-
 node-red-mockingbird
 ====================
 
 > base on node-red-node-web-data-generator
 
 
-A <a href="http://nodered.org" target="_new">Node-RED</a> node to create dummy
-data values from a template. Useful for building test-cases.
+A <a href="http://nodered.org" target="_new">Node-RED</a> node to create a mockdata for test-cases.
 
 Install
 -------
 
 Run the following command in your Node-RED user directory - typically `~/.node-red`
 
-        npm install node-red-mockingbird
+        npm install somax/node-red-mockingbird
 
 Usage
 -----
@@ -54,4 +52,6 @@ The example flow below produces a JSON string which is then converted into an ob
 
 Example flow
 
-[{"id":"325b6a4a.cf1706","type":"inject","z":"4affede3.af6f44","name":"","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":false,"x":110,"y":300,"wires":[["9d14acc0.c8d9d"]]},{"id":"96c9a04e.35232","type":"debug","z":"4affede3.af6f44","name":"","active":true,"console":"false","complete":"false","x":513,"y":300,"wires":[]},{"id":"9d14acc0.c8d9d","type":"data-generator","z":"4affede3.af6f44","name":"","field":"payload","fieldType":"msg","syntax":"json","template":"{\n    \"name\": \"{{firstName}} {{lastName}}\",\n    \"work\": \"{{company}}\",\n    \"email\": \"{{email}}\",\n    \"address\": \"{{int 1 100}} {{street}}\",\n    \"country\": \"{{country}}\",\n    \"countryCode\": \"{{countryCode}}\",\n    \"text\":\"{{lorem 20}}\"\n}","x":280,"y":300,"wires":[["96c9a04e.35232"]]}]
+```json
+[{"id":"10189452.18ef3c","type":"tab","label":"流程1"},{"id":"ed7643.abe789c","type":"inject","z":"10189452.18ef3c","name":"","topic":"","payload":"","payloadType":"str","repeat":"3","crontab":"","once":false,"x":270,"y":240,"wires":[["6c645b2e.b7f0f4"]]},{"id":"75379d17.68c494","type":"debug","z":"10189452.18ef3c","name":"","active":true,"console":"false","complete":"false","x":673,"y":240,"wires":[]},{"id":"6c645b2e.b7f0f4","type":"mockingbird","z":"10189452.18ef3c","name":"","field":"payload","fieldType":"msg","optionField":"MBOption","optionFieldType":"flow","syntax":"json","template":"{\n    \"ID\": \"{{guid}}\",\n    \"value\": {{float 20 80 '0.00'}},\n    \"manufacturerID\": \"{{randomItem 'IBM' 'SONY' 'APPLE'}}\",\n    \"tags\":[\n        {{#repeat 0 3}}\n           \"{{tag}}\"\n        {{/repeat}}\n    ],\n    \"location\":{\n        \"city\": \"{{city}}\",\n        \"zone\": \"{{randomItem 'A区' 'B区' 'C区'}}\",\n        \"building\": \"{{randomItem '1号楼' '2号楼'}}\",\n        \"floor\": \"{{randomItem '1F' '2F' '3F'}}\",\n        \"room\": \"{{randomItem '01' '02' '03'}}\"\n    }\n}","x":450,"y":240,"wires":[["75379d17.68c494"]]},{"id":"9f723d02.3aaa3","type":"function","z":"10189452.18ef3c","name":"option","func":"function randomArrayItem(arr){\n    return arr[Math.floor(Math.random() * arr.length)]\n}\nflow.set('MBOption', {\n    mockdata:{\n        cities: ['上海','北京','广州','武汉']\n    },\n    helpers:{\n        tag: function (){\n            return 'Tag-' + Math.floor(Math.random() * 99);\n        }\n    }\n\n})","outputs":1,"noerr":0,"x":330,"y":140,"wires":[[]]},{"id":"425de352.e346cc","type":"inject","z":"10189452.18ef3c","name":"","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":true,"x":150,"y":140,"wires":[["9f723d02.3aaa3"]]}]
+```

@@ -1,0 +1,13 @@
+{
+    "mockingbird": {
+        "label": {
+            "syntax": "返回",
+            "text": "字符串",
+            "json": "JSON 对象",
+            "option": "参数来源"
+        },
+        "errors": {
+            "json-error": "解析 JSON 时发生错误"
+        }
+    }
+}
